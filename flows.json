@@ -60,7 +60,7 @@
             "label": true,
             "stroke": "#000000",
             "fill": "#000000",
-            "color": "#000000"
+            "color": "#ffffff"
         },
         "nodes": [
             "3b1a8a31584b2923",
@@ -70,7 +70,7 @@
         ],
         "env": [],
         "x": 34,
-        "y": 899,
+        "y": 1499,
         "w": 612,
         "h": 122
     },
@@ -146,7 +146,7 @@
         ],
         "env": [],
         "x": 34,
-        "y": 1219,
+        "y": 1079,
         "w": 2792,
         "h": 402
     },
@@ -176,7 +176,7 @@
         ],
         "env": [],
         "x": 34,
-        "y": 1039,
+        "y": 899,
         "w": 1282,
         "h": 162
     },
@@ -734,7 +734,7 @@
         "firstMessageBypass": true,
         "bypassInterval": "2000",
         "x": 200,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "4bf8347e0ff3dd92"
@@ -756,7 +756,7 @@
             "ede8940271be32e4"
         ],
         "x": 75,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "80edd84e19354d29"
@@ -769,14 +769,14 @@
         "z": "7059b6139c3c11a9",
         "g": "ef841bf7f889499f",
         "name": "Gestion de l'ordre ON/OFF",
-        "func": "//msg.etat = \"test_\"+msg.person;\n\nmsg.topic_source = msg.topic;\nmsg.topic=msg.person;\n\nmsg.entity_id = `sensor.infos_${msg.person}`;\nmsg.nom_variable_fenetre = msg.person+'.binary_sensor.fenetre_door_'+msg.person;\nmsg.fenetre = flow.get(msg.nom_variable_fenetre);\n\nmsg.nom_variable_modeauto = msg.person+'.input_boolean.mode_auto_'+msg.person;\nmsg.modeauto = flow.get(msg.nom_variable_modeauto);\n\nmsg.nom_calendar = msg.person+'.calendar.chauffage_'+msg.person;\nmsg.value_calendar = flow.get(msg.nom_calendar);\n\nmsg.nom_input_number = msg.person+'.input_number.tcible_'+msg.person;\nmsg.value_input_number = flow.get(msg.nom_input_number);\n\n\n//flow.set(msg.person+'.timer', undefined);\nmsg.timer = flow.get(msg.person+'.timer');\n\nmsg.etat = flow.get(msg.person+'.etat');\n\n\nif(msg.person == 'elyot'){\n    msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level_3';\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'lylou'){\n    //msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level_2'\n    msg.entity_radiateur='input_boolean.alumage_chauffage_lylou' ;\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'parents'){\n    msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level';\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'bureau'){\n    msg.entity_radiateur='switch.on_off_light_5';\n    msg.nom_temperature = msg.person+'.sensor.temp_bureau_bt_temperature';\n}else if(msg.person == 'salonaquarium'){\n    msg.entity_radiateur='switch.radiateur_salon_d';\n    msg.nom_temperature = msg.person+'.sensor.temp_salonaquarium_bt_temperature';\n}else if(msg.person == 'salontele'){\n    msg.entity_radiateur='switch.radiateur_salon_g';\n    msg.nom_temperature = msg.person+'.sensor.temp_tele_bt_temperature';\n}\n\nmsg.value_temperature = flow.get(msg.nom_temperature);\n\nvar split_radiateur =  msg.entity_radiateur.split(\".\");\nmsg.type_radiateur = split_radiateur[0];\n\n\nmsg.timer_relance = 60000*15; // relance dans 15 min\nmsg.timer_chauffage = 60000*10; // 10min\nif(msg.fenetre == true){\n    msg.etat = 'fenetre_ouverte';\n    msg.etat_radiateur = 'off';\n    msg.pass=true;\n}else{\n    if(msg.value_input_number >msg.value_temperature){\n        if(msg.timer < Date.now() || msg.timer == undefined){\n            msg.etat = 'Actif '+(msg.timer_chauffage/60000)+' min'; \n            msg.etat_radiateur = 'on';\n            msg.pass=true;\n        }else{\n            //msg.etat = 'wait'\n            msg.pass=false;\n        }\n    }else{\n        msg.etat = 'off'; \n        msg.etat_radiateur = 'off';\n        msg.pass=true\n    }\n    /*\n    SI mode auto on alors prendre valeur calendar\n    sinon\n        prendre valeur tcbile\n    \n    \n    \n    */\n}\n\nmsg.payload = {\n    data: {\n        state: msg.etat,\n        //attributes: {\n           //friendly_name: msg.payload.name, \n           // unit_of_measurement: msg.unit,\n           // device_class: msg.device_class\n        //}\n    }\n};\n\n\nflow.set(msg.person+\".etat\", msg.etat);\n         \nreturn msg\n ",
+        "func": "//msg.etat = \"test_\"+msg.person;\n\nmsg.topic_source = msg.topic;\nmsg.topic=msg.person;\n\nmsg.entity_id = `sensor.infos_${msg.person}`;\nmsg.nom_variable_fenetre = msg.person+'.binary_sensor.fenetre_door_'+msg.person;\nmsg.fenetre = flow.get(msg.nom_variable_fenetre);\n\nmsg.nom_variable_modeauto = msg.person+'.input_boolean.mode_auto_'+msg.person;\nmsg.modeauto = flow.get(msg.nom_variable_modeauto);\n\nmsg.nom_calendar = msg.person+'.calendar.chauffage_'+msg.person;\nmsg.value_calendar = flow.get(msg.nom_calendar);\n\nmsg.nom_input_number = msg.person+'.input_number.tcible_'+msg.person;\nmsg.value_input_number = flow.get(msg.nom_input_number);\n\n\n//flow.set(msg.person+'.timer', undefined);\nmsg.timer = flow.get(msg.person+'.timer');\n\nmsg.etat = flow.get(msg.person+'.etat');\n\n\nif(msg.person == 'elyot'){\n    msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level_3';\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'lylou'){\n    //msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level_2'\n    msg.entity_radiateur='input_boolean.alumage_chauffage_lylou' ;\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'parents'){\n    msg.entity_radiateur='light.qubino_goap_zmnhjd1_flush_dimmer_pilot_wire_level';\n    msg.nom_temperature = msg.person+'.sensor.temperature_sa_t_ch_'+msg.person;\n}else if(msg.person == 'bureau'){\n    msg.entity_radiateur='switch.on_off_light_5';\n    msg.nom_temperature = msg.person+'.sensor.temp_bureau_bt_temperature';\n}else if(msg.person == 'salonaquarium'){\n    msg.entity_radiateur='switch.radiateur_salon_d';\n    msg.nom_temperature = msg.person+'.sensor.temp_salonaquarium_bt_temperature';\n}else if(msg.person == 'salontele'){\n    msg.entity_radiateur='switch.radiateur_salon_g';\n    msg.nom_temperature = msg.person+'.sensor.temp_tele_bt_temperature';\n}\n\nmsg.value_temperature = flow.get(msg.nom_temperature);\n\nvar split_radiateur =  msg.entity_radiateur.split(\".\");\nmsg.type_radiateur = split_radiateur[0];\n\n\nmsg.timer_relance = 60000*15; // relance dans 15 min\nmsg.timer_chauffage = 60000*10; // 10min\nif(msg.fenetre == true){\n    msg.etat = 'fenetre_ouverte';\n    msg.etat_radiateur = 'off';\n    msg.pass=true;\n}else{\n    if(msg.value_input_number >msg.value_temperature){\n        if(msg.timer < Date.now() || msg.timer == undefined){\n            msg.etat = 'Actif '+(msg.timer_chauffage/60000)+' min'; \n            msg.etat_radiateur = 'on';\n            msg.pass=true;\n        }else{\n            //msg.etat = 'wait'\n            msg.pass=false;\n        }\n    }else{\n        msg.etat = 'off'; \n        msg.etat_radiateur = 'off';\n        msg.pass=true\n    }\n}\n\nmsg.payload = {\n    data: {\n        state: msg.etat,\n        //attributes: {\n           //friendly_name: msg.payload.name, \n           // unit_of_measurement: msg.unit,\n           // device_class: msg.device_class\n        //}\n    }\n};\n\n\nflow.set(msg.person+\".etat\", msg.etat);\n         \nreturn msg\n ",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "8e891c1931724169"
@@ -807,7 +807,7 @@
             }
         ],
         "x": 810,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "6845a3aaf659ad14",
@@ -1135,13 +1135,11 @@
         "type": "link out",
         "z": "7059b6139c3c11a9",
         "g": "89eb0c5ab1facf08",
-        "name": "Out ModeAuto",
+        "name": "Out",
         "mode": "link",
         "links": [
             "5a12da657db13a79",
-            "a896e0b790f7f72b",
-            "f3daedec64da75e2",
-            "8c833b4f5e65c055"
+            "6c1603ae1e384a81"
         ],
         "x": 875,
         "y": 340,
@@ -1253,7 +1251,7 @@
             }
         ],
         "x": 160,
-        "y": 940,
+        "y": 1540,
         "wires": [
             [
                 "940dcf5245dac27c"
@@ -1275,7 +1273,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 550,
-        "y": 980,
+        "y": 1580,
         "wires": []
     },
     {
@@ -1291,7 +1289,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 940,
+        "y": 1540,
         "wires": [
             [
                 "84c784d37e138f66",
@@ -1313,7 +1311,7 @@
             "b7d0b07f61e0409c"
         ],
         "x": 515,
-        "y": 940,
+        "y": 1540,
         "wires": []
     },
     {
@@ -1422,7 +1420,8 @@
             "cdca0b2b2564323a",
             "1b1545ec32d0647a",
             "83e64b758c888a7e",
-            "d4546f90a67dd03d"
+            "d4546f90a67dd03d",
+            "dc1cefbf0af217be"
         ],
         "x": 1735,
         "y": 220,
@@ -1443,7 +1442,7 @@
             "ea1b1c995341d7ea"
         ],
         "x": 1275,
-        "y": 1080,
+        "y": 940,
         "wires": []
     },
     {
@@ -1502,7 +1501,7 @@
         "repair": true,
         "outputs": 1,
         "x": 1120,
-        "y": 1080,
+        "y": 940,
         "wires": [
             [
                 "cdca0b2b2564323a"
@@ -1634,7 +1633,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1460,
+        "y": 1320,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -1763,7 +1762,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -1787,7 +1786,7 @@
         "repair": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "2be67be23f8ac151"
@@ -1813,7 +1812,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1400,
+        "y": 1260,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -1839,7 +1838,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1380,
+        "y": 1240,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -1865,7 +1864,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1340,
+        "y": 1200,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -1891,7 +1890,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1320,
+        "y": 1180,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -1904,7 +1903,7 @@
         "z": "7059b6139c3c11a9",
         "g": "dfaf0acc18b09d6e",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1913,7 +1912,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 2730,
-        "y": 1420,
+        "y": 1280,
         "wires": []
     },
     {
@@ -1935,7 +1934,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1280,
+        "y": 1140,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -1961,7 +1960,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1260,
+        "y": 1120,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -1981,7 +1980,7 @@
         "finalize": "",
         "libs": [],
         "x": 2470,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "91b1b5d6669c55cc"
@@ -2023,7 +2022,7 @@
         "entity_location": "data",
         "override_data": "msg",
         "x": 660,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "afa96926fa46f358",
@@ -2050,7 +2049,7 @@
         "repair": false,
         "outputs": 1,
         "x": 990,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "d03080baa6e60d08"
@@ -2081,7 +2080,7 @@
             }
         ],
         "x": 2610,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "d50a707141aa5e85"
@@ -2097,7 +2096,7 @@
         "firstMessageBypass": true,
         "bypassInterval": "2000",
         "x": 2280,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "2c96e78293c1ade5"
@@ -2251,7 +2250,7 @@
         "repair": false,
         "outputs": 6,
         "x": 1010,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "3a9376497f9e3327"
@@ -2292,7 +2291,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1520,
+        "y": 1380,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -2318,7 +2317,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1160,
-        "y": 1580,
+        "y": 1440,
         "wires": [
             [
                 "c94c95436ea80185"
@@ -2338,7 +2337,7 @@
         "finalize": "",
         "libs": [],
         "x": 1560,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "70ac5ab41a9fb043"
@@ -2354,7 +2353,7 @@
         "firstMessageBypass": true,
         "bypassInterval": "1000",
         "x": 1360,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "4adc40b61ea73244"
@@ -2380,7 +2379,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 1730,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "b2b75aaf2f494b27"
@@ -2431,7 +2430,7 @@
         "repair": false,
         "outputs": 6,
         "x": 1850,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "8f81ae25b3fb5ea3"
@@ -2472,7 +2471,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1560,
+        "y": 1420,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -2498,7 +2497,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 2040,
-        "y": 1500,
+        "y": 1360,
         "wires": [
             [
                 "b98a5f29e3de1f17"
@@ -2520,7 +2519,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 770,
-        "y": 1160,
+        "y": 1020,
         "wires": []
     },
     {
@@ -2537,7 +2536,7 @@
             "b7d0b07f61e0409c"
         ],
         "x": 1275,
-        "y": 1120,
+        "y": 980,
         "wires": []
     },
     {
@@ -2548,10 +2547,11 @@
         "name": "",
         "links": [
             "9fbf95642eaa0901",
-            "2be67be23f8ac151"
+            "2be67be23f8ac151",
+            "e9aafea079e9887c"
         ],
         "x": 75,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "75b1155e6687f173"
@@ -2577,7 +2577,7 @@
         "outputProperties": [],
         "queue": "none",
         "x": 290,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "cee8ad8087df8f57",
@@ -2600,7 +2600,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 470,
-        "y": 1540,
+        "y": 1400,
         "wires": []
     },
     {
@@ -2627,7 +2627,7 @@
         "repair": false,
         "outputs": 2,
         "x": 550,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [],
             [
@@ -2644,7 +2644,7 @@
         "firstMessageBypass": true,
         "bypassInterval": "1000",
         "x": 700,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "313cad9a202c0f78"
@@ -2664,7 +2664,7 @@
         "finalize": "",
         "libs": [],
         "x": 870,
-        "y": 1440,
+        "y": 1300,
         "wires": [
             [
                 "fda9830e2b9e9c8f"
