@@ -1,771 +1,338 @@
 [
     {
-        "id": "dfaf0acc18b09d6e",
+        "id": "9060c286eff61b1d",
         "type": "group",
         "z": "7059b6139c3c11a9",
-        "name": "Execution chauffage X min maxi + wait X min",
+        "name": "Lancement manuel de l'alimentation des variables FLOW",
         "style": {
             "label": true,
-            "fill": "#dbcbe7",
             "stroke": "#000000",
+            "fill": "#e3f3d3",
             "color": "#000000"
         },
         "nodes": [
-            "486faba9e13d7f52",
-            "458d740c3cc0a221",
-            "6e602ce5e8c46411",
-            "5c7c9da4c87b8ff7",
-            "245d3f54e1fdbe92",
-            "bfe6d265adb88432",
-            "d50a707141aa5e85",
-            "3a9376497f9e3327",
-            "8f81ae25b3fb5ea3",
-            "2c96e78293c1ade5",
-            "91b1b5d6669c55cc",
-            "b98a5f29e3de1f17",
-            "fda9830e2b9e9c8f",
-            "eeec5040aab1fe81",
-            "3e2181b009e96b51",
-            "4adc40b61ea73244",
-            "c94c95436ea80185",
-            "70ac5ab41a9fb043",
-            "b2b75aaf2f494b27",
-            "fa2cc4a5efb2156c",
-            "a6cbb41d0b6ed001",
-            "d3edb32e267b6e0b",
-            "75b1155e6687f173",
-            "d0e5ae384866bd6d",
-            "cee8ad8087df8f57",
-            "70695752507353ed",
-            "313cad9a202c0f78"
+            "ea42115cfe1bc6f9",
+            "f177214382e0abcb",
+            "7aaf36f3bed2e444",
+            "6526ac8d5b4b8327",
+            "b4a7ec8d9ed8a27b",
+            "846eb235d21b7bb4",
+            "f690f3da65dfd2d8",
+            "4ea49fd9398ad0dd",
+            "3f06fdb3dfb6dd3b",
+            "af3d48622960e853",
+            "82475749d5b0fb33"
         ],
         "env": [],
         "x": 34,
-        "y": 1219,
-        "w": 2972,
-        "h": 402
+        "y": 539,
+        "w": 1092,
+        "h": 342
     },
     {
-        "id": "486faba9e13d7f52",
-        "type": "delay",
+        "id": "ea42115cfe1bc6f9",
+        "type": "inject",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
+        "g": "9060c286eff61b1d",
         "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1460,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 580,
         "wires": [
             [
-                "c94c95436ea80185"
+                "b4a7ec8d9ed8a27b",
+                "6526ac8d5b4b8327",
+                "f177214382e0abcb",
+                "f690f3da65dfd2d8",
+                "4ea49fd9398ad0dd"
             ]
         ]
     },
     {
-        "id": "458d740c3cc0a221",
-        "type": "delay",
+        "id": "f177214382e0abcb",
+        "type": "ha-get-entities",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1440,
+        "g": "9060c286eff61b1d",
+        "name": "Get_capteur_fenetre",
+        "server": "eabf9f6c62f75bbd",
+        "version": 0,
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "binary_sensor.fenetre",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 450,
+        "y": 580,
         "wires": [
             [
-                "b98a5f29e3de1f17"
+                "7aaf36f3bed2e444"
             ]
         ]
     },
     {
-        "id": "6e602ce5e8c46411",
-        "type": "delay",
+        "id": "7aaf36f3bed2e444",
+        "type": "change",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1400,
+        "g": "9060c286eff61b1d",
+        "name": "Set Topic",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.entity_id",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 580,
         "wires": [
             [
-                "c94c95436ea80185"
+                "3f06fdb3dfb6dd3b"
             ]
         ]
     },
     {
-        "id": "5c7c9da4c87b8ff7",
-        "type": "delay",
+        "id": "6526ac8d5b4b8327",
+        "type": "ha-get-entities",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1380,
+        "g": "9060c286eff61b1d",
+        "name": "Get TemperatureCapteur",
+        "server": "eabf9f6c62f75bbd",
+        "version": 0,
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "sensor.temperature_sa_t_ch_",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 460,
+        "y": 640,
         "wires": [
             [
-                "b98a5f29e3de1f17"
+                "7aaf36f3bed2e444"
             ]
         ]
     },
     {
-        "id": "245d3f54e1fdbe92",
-        "type": "delay",
+        "id": "b4a7ec8d9ed8a27b",
+        "type": "ha-get-entities",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1340,
+        "g": "9060c286eff61b1d",
+        "name": "Get Calendrier",
+        "server": "eabf9f6c62f75bbd",
+        "version": 0,
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "calendar.chauffage",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 430,
+        "y": 760,
         "wires": [
             [
-                "c94c95436ea80185"
+                "846eb235d21b7bb4"
             ]
         ]
     },
     {
-        "id": "bfe6d265adb88432",
-        "type": "delay",
+        "id": "846eb235d21b7bb4",
+        "type": "change",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1320,
+        "g": "9060c286eff61b1d",
+        "name": "Set Topic",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.attributes.description",
+                "pt": "msg",
+                "to": "data.new_state.attributes.description",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 760,
         "wires": [
             [
-                "b98a5f29e3de1f17"
+                "7aaf36f3bed2e444"
             ]
         ]
     },
     {
-        "id": "d50a707141aa5e85",
-        "type": "debug",
+        "id": "f690f3da65dfd2d8",
+        "type": "ha-get-entities",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2910,
-        "y": 1420,
-        "wires": []
-    },
-    {
-        "id": "3a9376497f9e3327",
-        "type": "delay",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1280,
+        "g": "9060c286eff61b1d",
+        "name": "Get Tcible",
+        "server": "eabf9f6c62f75bbd",
+        "version": 0,
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "input_number.tcible",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 410,
+        "y": 700,
         "wires": [
             [
-                "c94c95436ea80185"
+                "7aaf36f3bed2e444"
             ]
         ]
     },
     {
-        "id": "8f81ae25b3fb5ea3",
-        "type": "delay",
+        "id": "4ea49fd9398ad0dd",
+        "type": "ha-get-entities",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1260,
+        "g": "9060c286eff61b1d",
+        "name": "Get ModeAuto",
+        "server": "eabf9f6c62f75bbd",
+        "version": 0,
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "input_boolean.mode_auto",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "split",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 450,
+        "y": 840,
         "wires": [
             [
-                "b98a5f29e3de1f17"
+                "7aaf36f3bed2e444"
             ]
         ]
     },
     {
-        "id": "2c96e78293c1ade5",
+        "id": "3f06fdb3dfb6dd3b",
         "type": "function",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "purge tmp",
-        "func": "flow.set(msg.person+'.timer', undefined);\nmsg.etat ='verif_chauffage';\n\nmsg.payload = {\n    data: {\n        state: msg.etat,\n        //attributes: {\n           //friendly_name: msg.payload.name, \n           // unit_of_measurement: msg.unit,\n           // device_class: msg.device_class\n        //}\n    }\n};\n\n\nflow.set(msg.person+\".etat\", msg.etat);\n         \nreturn msg;",
+        "g": "9060c286eff61b1d",
+        "name": "Transform Data",
+        "func": "if(msg.payload == 'on')\n{ \n msg.payload = true;\n}else if(msg.payload == 'off'){\n msg.payload = false;\n}\nreturn msg\n ",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2630,
-        "y": 1420,
+        "x": 930,
+        "y": 580,
         "wires": [
             [
-                "91b1b5d6669c55cc"
+                "82475749d5b0fb33"
             ]
         ]
     },
     {
-        "id": "91b1b5d6669c55cc",
-        "type": "ha-api",
+        "id": "af3d48622960e853",
+        "type": "inject",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
+        "g": "9060c286eff61b1d",
         "name": "",
-        "server": "eabf9f6c62f75bbd",
-        "version": 1,
-        "debugenabled": false,
-        "protocol": "http",
-        "method": "post",
-        "path": "/api/states/{{entity_id}}",
-        "data": "",
-        "dataType": "json",
-        "responseType": "json",
-        "outputProperties": [
+        "props": [
             {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "results"
-            }
-        ],
-        "x": 2790,
-        "y": 1420,
-        "wires": [
-            [
-                "d50a707141aa5e85"
-            ]
-        ]
-    },
-    {
-        "id": "b98a5f29e3de1f17",
-        "type": "simple-queue",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "firstMessageBypass": true,
-        "bypassInterval": "2000",
-        "x": 2440,
-        "y": 1420,
-        "wires": [
-            [
-                "2c96e78293c1ade5"
-            ]
-        ]
-    },
-    {
-        "id": "fda9830e2b9e9c8f",
-        "type": "switch",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "property": "person",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "elyot",
-                "vt": "str"
+                "p": "payload"
             },
             {
-                "t": "eq",
-                "v": "lylou",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "parents",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "bureau",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "salontele",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "salonaquarium",
+                "p": "topic",
                 "vt": "str"
             }
         ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 6,
-        "x": 1070,
-        "y": 1440,
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 780,
         "wires": [
             [
-                "3a9376497f9e3327"
-            ],
-            [
-                "245d3f54e1fdbe92"
-            ],
-            [
-                "6e602ce5e8c46411"
-            ],
-            [
-                "486faba9e13d7f52"
-            ],
-            [
-                "eeec5040aab1fe81"
-            ],
-            [
-                "3e2181b009e96b51"
+                "b4a7ec8d9ed8a27b"
             ]
         ]
     },
     {
-        "id": "eeec5040aab1fe81",
-        "type": "delay",
+        "id": "82475749d5b0fb33",
+        "type": "link out",
         "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1520,
-        "wires": [
-            [
-                "c94c95436ea80185"
-            ]
-        ]
-    },
-    {
-        "id": "3e2181b009e96b51",
-        "type": "delay",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1240,
-        "y": 1580,
-        "wires": [
-            [
-                "c94c95436ea80185"
-            ]
-        ]
-    },
-    {
-        "id": "4adc40b61ea73244",
-        "type": "function",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "extinction +wait 15min",
-        "func": "msg.etat_radiateur = 'off';\nvar timestampfinal = Date.now()+ msg.timer_relance;\nflow.set(msg.person+'.timer',timestampfinal);\nflow.set(msg.person+'.etat','wait off '+(msg.timer_relance/60000));\nmsg.delay = msg.timer_relance;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1660,
-        "y": 1420,
-        "wires": [
-            [
-                "70ac5ab41a9fb043"
-            ]
-        ]
-    },
-    {
-        "id": "c94c95436ea80185",
-        "type": "simple-queue",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "firstMessageBypass": true,
-        "bypassInterval": "1000",
-        "x": 1440,
-        "y": 1420,
-        "wires": [
-            [
-                "4adc40b61ea73244"
-            ]
-        ]
-    },
-    {
-        "id": "70ac5ab41a9fb043",
-        "type": "api-call-service",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "On/Off",
-        "server": "eabf9f6c62f75bbd",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "{{type_radiateur}}",
-        "service": "turn_{{etat_radiateur}}",
-        "entityId": "{{entity_radiateur}}",
-        "data": "",
-        "dataType": "jsonata",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 1850,
-        "y": 1420,
-        "wires": [
-            [
-                "b2b75aaf2f494b27"
-            ]
-        ]
-    },
-    {
-        "id": "b2b75aaf2f494b27",
-        "type": "switch",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "property": "person",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "elyot",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "lylou",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "parents",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "bureau",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "salontele",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "salonaquarium",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 6,
-        "x": 1970,
-        "y": 1420,
-        "wires": [
-            [
-                "8f81ae25b3fb5ea3"
-            ],
-            [
-                "bfe6d265adb88432"
-            ],
-            [
-                "5c7c9da4c87b8ff7"
-            ],
-            [
-                "458d740c3cc0a221"
-            ],
-            [
-                "a6cbb41d0b6ed001"
-            ],
-            [
-                "fa2cc4a5efb2156c"
-            ]
-        ]
-    },
-    {
-        "id": "fa2cc4a5efb2156c",
-        "type": "delay",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1560,
-        "wires": [
-            [
-                "b98a5f29e3de1f17"
-            ]
-        ]
-    },
-    {
-        "id": "a6cbb41d0b6ed001",
-        "type": "delay",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "pauseType": "delayv",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 2160,
-        "y": 1500,
-        "wires": [
-            [
-                "b98a5f29e3de1f17"
-            ]
-        ]
-    },
-    {
-        "id": "d3edb32e267b6e0b",
-        "type": "link in",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
+        "g": "9060c286eff61b1d",
+        "name": "Out manuelle",
+        "mode": "link",
         "links": [
-            "9fbf95642eaa0901",
-            "2be67be23f8ac151"
+            "275c9b3c154b2c55"
         ],
-        "x": 75,
-        "y": 1440,
-        "wires": [
-            [
-                "75b1155e6687f173"
-            ]
-        ]
-    },
-    {
-        "id": "75b1155e6687f173",
-        "type": "api-call-service",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "server": "eabf9f6c62f75bbd",
-        "version": 3,
-        "debugenabled": false,
-        "service_domain": "{{type_radiateur}}",
-        "service": "turn_{{etat_radiateur}}",
-        "entityId": "{{entity_radiateur}}",
-        "data": "",
-        "dataType": "jsonata",
-        "mergecontext": "",
-        "mustacheAltTags": false,
-        "outputProperties": [],
-        "queue": "none",
-        "x": 290,
-        "y": 1440,
-        "wires": [
-            [
-                "cee8ad8087df8f57",
-                "d0e5ae384866bd6d"
-            ]
-        ]
-    },
-    {
-        "id": "d0e5ae384866bd6d",
-        "type": "debug",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 1540,
+        "x": 1085,
+        "y": 580,
         "wires": []
-    },
-    {
-        "id": "cee8ad8087df8f57",
-        "type": "switch",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "property": "etat_radiateur",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "off",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "on",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 550,
-        "y": 1440,
-        "wires": [
-            [],
-            [
-                "70695752507353ed"
-            ]
-        ]
-    },
-    {
-        "id": "70695752507353ed",
-        "type": "simple-queue",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "",
-        "firstMessageBypass": true,
-        "bypassInterval": "1000",
-        "x": 720,
-        "y": 1440,
-        "wires": [
-            [
-                "313cad9a202c0f78"
-            ]
-        ]
-    },
-    {
-        "id": "313cad9a202c0f78",
-        "type": "function",
-        "z": "7059b6139c3c11a9",
-        "g": "dfaf0acc18b09d6e",
-        "name": "wait_relance",
-        "func": "var timestampfinal = Date.now()+ msg.timer_chauffage;\nflow.set(msg.person+'.timer',timestampfinal);\nmsg.delay = msg.timer_chauffage;\nflow.set(msg.person+'.etat','wait on '+(msg.timer_chauffage/60000));\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 1440,
-        "wires": [
-            [
-                "fda9830e2b9e9c8f"
-            ]
-        ]
     },
     {
         "id": "eabf9f6c62f75bbd",
